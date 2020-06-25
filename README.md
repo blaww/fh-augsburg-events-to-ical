@@ -20,11 +20,11 @@ docker run -v $(pwd):/app/out/ svenfritsch/fh-augsburg-events-to-ical:latest
 ### Build Project
 
 ```bash
-docker build -t docker-crawler .
+docker build -t svenfritsch/fh-augsburg-events-to-ical .
 ```
 
 ### Run Project
 
 ```bash
-docker run -v $(pwd):/app/out/ docker-crawler
+docker run -v $(pwd):/app/out/ svenfritsch/fh-augsburg-events-to-ical
 ```
