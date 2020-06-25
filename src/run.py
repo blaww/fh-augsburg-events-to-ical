@@ -4,7 +4,7 @@ import re
 from ics import Calendar, Event
 from bs4 import BeautifulSoup
 
-def parse_date(begin: str, end: str) -> str:
+def parse_date(begin: str, end: str) -> str, str:
     begin_date = datetime.datetime.strptime(begin, '%d.%m.%Y, %H:%M').strftime('%Y-%m-%d')
     begin_time = datetime.datetime.strptime(begin, '%d.%m.%Y, %H:%M').strftime('%H:%M')
 
@@ -36,9 +36,6 @@ for event_html in event_list:
         continue
 
     event.url = "https://www.hs-augsburg.de/Gestaltung/" + event_html.find("h3", class_="hyphenate").find("a")['href']
-    # location = event_html.find("h4", class_="location")
-    # if location:
-    #     event.location = event_html.find("h4", class_="location")
 
     date = event_html.find("h4", class_="date").text.replace("Uhr", "")
     date_begin, date_end = date.split("-")
@@ -46,6 +43,5 @@ for event_html in event_list:
 
     calendar.events.add(event)
 
-# open('/app/out/events.ics', 'w')
 with open('/app/out/events.ics', 'w') as f:
     f.writelines(calendar)
