@@ -1,8 +1,10 @@
 import requests
 import datetime
 import re
+
 from ics import Calendar, Event
 from bs4 import BeautifulSoup
+
 
 def parse_date(begin: str, end: str) -> str, str:
     """
